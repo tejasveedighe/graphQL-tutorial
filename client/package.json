@@ -9,13 +9,16 @@
     "@emotion/core": "^10.1.1",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
+    "and": "^0.0.3",
     "framer-motion": "^4.1.17",
+    "npm": "^9.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-emotion": "^10.0.0",
     "react-markdown": "^6.0.2",
     "react-player": "^2.6.0",
-    "react-router-dom": "^6.8.0"
+    "react-router-dom": "^6.8.0",
+    "start": "^5.1.0"
   },
   "scripts": {
     "test": "vitest",
