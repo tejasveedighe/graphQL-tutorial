@@ -5,14 +5,14 @@ import Pages from './pages';
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 
 const client = new ApolloClient({
-	url: "http://localhost:4000",
+	uri: "http://localhost:4000",
 	cache: new InMemoryCache(),
 });
 
 ReactDOM.render(
-	<ApolloClient client={client}>
+	<ApolloProvider client={client}>
 		<GlobalStyles />
 		<Pages />
-	</ApolloClient>,
+	</ApolloProvider>,
 	document.getElementById("root")
 );
