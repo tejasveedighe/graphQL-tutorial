@@ -1,9 +1,12 @@
 import gql from "graphql-tag";
 
 export const typeDefs = gql`
+	"the query is the entry point of our schema"
 	type Query {
 		"Get tracks array for homepage grid"
 		tracksForHome: [Track!]!
+		"Fetch a specific track, provided a track's ID"
+		track(id: ID!): Track
 	}
 
 	"A track is a group of Modules that teaches about a specific topic"
