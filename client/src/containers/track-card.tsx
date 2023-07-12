@@ -3,36 +3,40 @@ import styled from "@emotion/styled";
 import { colors, mq } from "../styles";
 import { humanReadableTimeFromSeconds } from "../utils/helpers";
 import type { Track } from "../__generated__/graphql";
+import { useNavigate } from "react-router-dom";
 
 /**
  * Track Card component renders basic info in a card format
  * for each track populating the tracks grid homepage.
  */
 const TrackCard: React.FC<{ track: Omit<Track, "modules"> }> = ({ track }) => {
-  const { title, thumbnail, author, length, modulesCount } = track;
-
-  return (
-    <CardContainer>
-      <CardContent>
-        <CardImageContainer>
-          <CardImage src={thumbnail || ""} alt={title} />
-        </CardImageContainer>
-        <CardBody>
-          <CardTitle>{title || ""}</CardTitle>
-          <CardFooter>
-            <AuthorImage src={author.photo || ""} />
-            <AuthorAndTrack>
-              <AuthorName>{author.name}</AuthorName>
-              <TrackLength>
-                {modulesCount} modules -{" "}
-                {humanReadableTimeFromSeconds(length || 0)}
-              </TrackLength>
-            </AuthorAndTrack>
-          </CardFooter>
-        </CardBody>
-      </CardContent>
-    </CardContainer>
-  );
+	const { title, thumbnail, author, length, modulesCount, id } = track;
+	const navigate = useNavigate();
+	const handleCardClick = (id: String) => {
+		navigate(`/track/${id}`);
+	};
+	return (
+		<CardContainer onClick={() => handleCardClick(id)}>
+			<CardContent>
+				<CardImageContainer>
+					<CardImage src={thumbnail || ""} alt={title} />
+				</CardImageContainer>
+				<CardBody>
+					<CardTitle>{title || ""}</CardTitle>
+					<CardFooter>
+						<AuthorImage src={author.photo || ""} />
+						<AuthorAndTrack>
+							<AuthorName>{author.name}</AuthorName>
+							<TrackLength>
+								{modulesCount} modules -{" "}
+								{humanReadableTimeFromSeconds(length || 0)}
+							</TrackLength>
+						</AuthorAndTrack>
+					</CardFooter>
+				</CardBody>
+			</CardContent>
+		</CardContainer>
+	);
 };
 
 export default TrackCard;
